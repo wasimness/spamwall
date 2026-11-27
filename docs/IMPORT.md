@@ -2,7 +2,7 @@
 
 > **Read this first**
 >
-> - Settings and rules import separately. `spamblocker-settings.gz` only touches app settings (allow switches, Recent Apps) and never your number rules. `spamblocker-all-rules.gz` and `group-*.gz` only touch number rules. `spamblocker-full-setup.gz` does both.
+> - Settings and rules import separately. `spamblocker-settings.gz` only touches app settings (allow switches, Recent Apps) and never your number rules. `spamblocker-all-rules.gz` and the four group files (`spamblocker-telemarketing.gz`, `spamblocker-call-centres.gz`, `spamblocker-spam-mobiles.gz`, `spamblocker-banks-govt.gz`) only touch number rules. `spamblocker-full-setup.gz` does both.
 > - Number-rule imports do not stack. Each import replaces ALL number rules, including your own and any earlier SpamWall import. To block two or three groups, import `spamblocker-all-rules.gz`, or import one group and add the other patterns by hand with "New" in Number Rules, copying the regex from `rules/in/block/<ID>.txt`. For all rules plus banks, import `spamblocker-all-rules.gz` and add IN-1600 (from `rules/in/optional/IN-1600.txt`) by hand.
 > - Importing `spamblocker-settings.gz` replaces your Recent Apps list and the allow switches.
 > - Always export a backup first; importing it again is the undo.
@@ -45,12 +45,12 @@ The raw lists in `raw/` (CSV, JSON) are app-agnostic: the same rows as the SpamB
 1. In SpamBlocker, open **Settings > Backup > Export** and save a backup of your current setup first.
 2. Download the file you picked to your phone.
 3. Open **Settings > Backup > Import** and pick the file.
-4. In the **Include Settings** dialog, tap a category to move it between Include and Exclude. Keep only the category the file has (Others for `spamblocker-settings.gz`, Regex Settings for `spamblocker-all-rules.gz` and `group-*.gz`, both for `spamblocker-full-setup.gz`).
+4. In the **Include Settings** dialog, tap a category to move it between Include and Exclude. Keep only the category the file has (Others for `spamblocker-settings.gz`, Regex Settings for `spamblocker-all-rules.gz` and the four group files (`spamblocker-telemarketing.gz`, `spamblocker-call-centres.gz`, `spamblocker-spam-mobiles.gz`, `spamblocker-banks-govt.gz`), both for `spamblocker-full-setup.gz`).
 5. Confirm the import.
 
 ## Nuances
 
-- Import REPLACES the whole section. Number rules are cleared and re-added, so importing a `spamblocker-all-rules.gz` or `group-*.gz` file (or `spamblocker-full-setup.gz`) deletes your own number rules. Export first, or add your own rules again afterwards.
+- Import REPLACES the whole section. Number rules are cleared and re-added, so importing a `spamblocker-all-rules.gz` or the four group files (`spamblocker-telemarketing.gz`, `spamblocker-call-centres.gz`, `spamblocker-spam-mobiles.gz`, `spamblocker-banks-govt.gz`) file (or `spamblocker-full-setup.gz`) deletes your own number rules. Export first, or add your own rules again afterwards.
 - A file that lacks a category shows "This setting is missing from the backup file and cannot be restored" for that category. Exclude it, as in step 4.
 - Allow and block rules must never share a priority. Here allow is 15, the built-in allow checks are 10 and block is 5.
 - Numbers are matched without +91 or a leading 0.
