@@ -54,7 +54,7 @@ Numbers are matched without `+91` or a leading `0`.
 
 ## Blocked by mistake?
 
-Open an [**Unblock request**](../../issues/new?template=unblock-request.yml). Give the number (or its first digits), the company and why it is legitimate. Rules that block real businesses are narrowed or removed.
+Open an [**Unblock request**](../../issues/new?template=unblock-request.yml). Give the number (or its first digits), the company and why it is legitimate. If a rule blocks a real business, we narrow it or remove it.
 
 ## Contributing
 
