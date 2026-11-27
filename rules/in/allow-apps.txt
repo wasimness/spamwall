@@ -5,7 +5,6 @@ com.flipkart.android    # Flipkart
 com.myntra.android    # Myntra
 com.meesho.supply    # Meesho
 com.jio.jiomart    # JioMart
-com.nykaa.android    # Nykaa (verify package)
 # Quick commerce / food delivery
 in.swiggy.android    # Swiggy
 com.application.zomato    # Zomato
@@ -21,3 +20,6 @@ com.phonepe.app    # PhonePe
 net.one97.paytm    # Paytm
 com.google.android.apps.nbu.paisa.user    # Google Pay
 com.jio.myjio    # MyJio
+com.paypal.android.p2pmobile    # PayPal
+com.transferwise.android    # Wise
+in.gov.umang.negd.g2c    # UMANG (government services)

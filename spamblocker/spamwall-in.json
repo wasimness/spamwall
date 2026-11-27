@@ -33,6 +33,71 @@
   "minDuration": 15,
   "inXDay": 7
  },
+ "recentApps": {
+  "list": [
+   {
+    "pkgName": "in.amazon.mShop.android.shopping"
+   },
+   {
+    "pkgName": "com.flipkart.android"
+   },
+   {
+    "pkgName": "com.myntra.android"
+   },
+   {
+    "pkgName": "com.meesho.supply"
+   },
+   {
+    "pkgName": "com.jio.jiomart"
+   },
+   {
+    "pkgName": "in.swiggy.android"
+   },
+   {
+    "pkgName": "com.application.zomato"
+   },
+   {
+    "pkgName": "com.grofers.customerapp"
+   },
+   {
+    "pkgName": "com.zeptoconsumerapp"
+   },
+   {
+    "pkgName": "com.bigbasket.mobileapp"
+   },
+   {
+    "pkgName": "com.ubercab"
+   },
+   {
+    "pkgName": "com.rapido.passenger"
+   },
+   {
+    "pkgName": "com.olacabs.customer"
+   },
+   {
+    "pkgName": "com.phonepe.app"
+   },
+   {
+    "pkgName": "net.one97.paytm"
+   },
+   {
+    "pkgName": "com.google.android.apps.nbu.paisa.user"
+   },
+   {
+    "pkgName": "com.jio.myjio"
+   },
+   {
+    "pkgName": "com.paypal.android.p2pmobile"
+   },
+   {
+    "pkgName": "com.transferwise.android"
+   },
+   {
+    "pkgName": "in.gov.umang.negd.g2c"
+   }
+  ],
+  "inXMin": 120
+ },
  "numberRules": {
   "rules": [
    {

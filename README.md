@@ -1,15 +1,28 @@
 # spamwall
 
-Pattern-based spam-call block rules you can import in one click. Built for [SpamBlocker](https://github.com/aj3423/SpamBlocker) on Android; the plain regex lists work in any blocker that accepts regular expressions.
+![spamwall: spam call and SMS block patterns for India](assets/banner.svg)
 
-The first ruleset is **India**. It blocks whole number ranges used by telemarketers and call centres instead of single numbers. Calls from shopping, delivery, ride and payment apps, from your contacts, and from official service lines are never blocked.
+**For Indian phone numbers (+91), calls and SMS.** spamwall is a set of pattern-based block rules you can import in one click. It is built for [SpamBlocker](https://github.com/aj3423/SpamBlocker) on Android; the plain regex lists work in any blocker that accepts regular expressions.
+
+It blocks whole number ranges used by telemarketers and call centres instead of single numbers. Every rule filters both calls and SMS. Calls and messages from shopping, delivery, ride and payment apps, from your contacts, and from official service lines are never blocked.
+
+> SMS filtering works only when **SMS** is switched on under *Settings > Screening* in SpamBlocker; follow the setup prompt it shows.
+## The app: SpamBlocker
+
+spamwall's import files are made for **[SpamBlocker](https://github.com/aj3423/SpamBlocker)**, a free, open-source call and SMS blocker for Android by aj3423. It is the app the maintainer uses every day with these rules.
+
+- Get it from [F-Droid](https://f-droid.org/packages/spam.blocker/) or the [GitHub releases page](https://github.com/aj3423/SpamBlocker/releases).
+- It runs on your phone with no account, and number checks happen on the device.
+- Questions about the app itself go to the [SpamBlocker repository](https://github.com/aj3423/SpamBlocker/issues); questions about these rules go [here](../../issues).
+
+spamwall is a separate community project and is not made by or affiliated with SpamBlocker.
 
 ## Quick start (SpamBlocker)
 
 1. In SpamBlocker, export a backup first: **Settings > Backup > Export**. An import replaces your number rules.
 2. Download [`spamblocker/spamwall-in.gz`](spamblocker/spamwall-in.gz) to your phone.
 3. **Settings > Backup > Import**, pick the file, keep only **Others** and **Regex Settings** under *Include Settings*, then tap **Import**.
-4. **Settings > Recent Apps**: switch on the apps you use from [`rules/in/allow-apps.txt`](rules/in/allow-apps.txt) and set the time to 120 minutes, so delivery riders and drivers on masked numbers get through.
+4. **Recent Apps** comes pre-filled with the shopping, delivery, ride, payment and government apps in [`rules/in/allow-apps.txt`](rules/in/allow-apps.txt), set to 120 minutes. If you used one of them in the last 2 hours, any call gets through, so delivery riders and drivers on masked numbers reach you. Apps you have not installed are ignored. Add your own bank and broker apps in **Settings > Recent Apps**.
 5. Check that **Contacts**, **Repeated Call**, **Dialed Number** and **Answered Number** are on.
 
 Want bank and insurance service calls blocked too? Use `spamwall-in-strict.gz` instead, and add your own banks' 1600 numbers to your contacts first.
@@ -54,7 +67,7 @@ Numbers are matched without `+91` or a leading `0`.
 
 ## Blocked by mistake?
 
-Open an [**Unblock request**](../../issues/new?template=unblock-request.yml). Give the number (or its first digits), the company and why it is legitimate. Rules that block real businesses are narrowed or removed.
+Open an [**Unblock request**](../../issues/new?template=unblock-request.yml). Give the number (or its first digits), the company and why it is legitimate. If a rule blocks a real business, we narrow it or remove it.
 
 ## Contributing
 

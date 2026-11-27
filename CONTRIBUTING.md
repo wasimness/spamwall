@@ -6,4 +6,4 @@
 - Never add official service series (India: 1600, 1601) to `block.txt`.
 - Never commit personal phone numbers or call logs.
 - After editing, run `python -I tools/build_spamblocker.py` and commit the rebuilt files in `spamblocker/`.
-- False positives are fixed first: an unblock request outranks a new block.
+- Fix false positives first. An unblock request outranks a new block.
