@@ -1,4 +1,4 @@
-# spamwall India OPTIONAL BLOCK pattern (off by default; only in rules-strict)
+# SpamWall India OPTIONAL BLOCK pattern (off by default; only in rules-strict)
 # Blocks: official BFSI and government service and transactional series.
 # Source: TRAI Direction, PIB https://pib.gov.in/PressReleasePage.aspx?PRID=2191647
 # False-positive risk: high. Blocks real bank, insurer, broker and government calls. Add your own banks to contacts first.

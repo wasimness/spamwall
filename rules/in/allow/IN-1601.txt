@@ -1,4 +1,4 @@
-# spamwall India ALLOW pattern (national number without +91 or leading 0)
+# SpamWall India ALLOW pattern (national number without +91 or leading 0)
 # Allows: official series for service and transactional calls from utilities, courier and logistics (your deliveries).
 # Source: TRAI Direction 10 Aug 2026 https://trai.gov.in/sites/default/files/2026-08/Direction_10082026.pdf
 # False-positive risk: low. Allowing is the safe side; a spammer using this series would break TRAI rules.

@@ -1,21 +1,21 @@
-# spamwall
+# SpamWall
 
-![spamwall: spam call and SMS block patterns for India](assets/banner.svg)
+![SpamWall: spam call and SMS block patterns for India](assets/banner.svg)
 
-**For Indian phone numbers (+91), calls and SMS.** spamwall is a set of pattern-based block rules you can import in one click. It is built for [SpamBlocker](https://github.com/aj3423/SpamBlocker) on Android; the plain regex lists work in any blocker that accepts regular expressions.
+**For Indian phone numbers (+91), calls and SMS.** SpamWall is a set of pattern-based block rules you can import in one click. It is built for [SpamBlocker](https://github.com/aj3423/SpamBlocker) on Android; the plain regex lists work in any blocker that accepts regular expressions.
 
 It blocks whole number ranges used by telemarketers and call centres instead of single numbers. Every rule filters both calls and SMS. Calls and messages from shopping, delivery, ride and payment apps, from your contacts, and from official service lines are never blocked.
 
 > SMS filtering works only when **SMS** is switched on under *Settings > Screening* in SpamBlocker; follow the setup prompt it shows.
 ## The app: SpamBlocker
 
-spamwall's import files are made for **[SpamBlocker](https://github.com/aj3423/SpamBlocker)**, a free, open-source call and SMS blocker for Android by aj3423. It is the app the maintainer uses every day with these rules.
+SpamWall's import files are made for **[SpamBlocker](https://github.com/aj3423/SpamBlocker)**, a free, open-source call and SMS blocker for Android by aj3423. It is the app the maintainer uses every day with these rules.
 
 - Get it from [F-Droid](https://f-droid.org/packages/spam.blocker/) or the [GitHub releases page](https://github.com/aj3423/SpamBlocker/releases).
 - It runs on your phone with no account, and number checks happen on the device.
 - Questions about the app itself go to the [SpamBlocker repository](https://github.com/aj3423/SpamBlocker/issues); questions about these rules go [here](../../issues).
 
-spamwall is a separate community project and is not made by or affiliated with SpamBlocker.
+SpamWall is a separate community project and is not made by or affiliated with SpamBlocker.
 
 ## Quick start (SpamBlocker)
 
@@ -31,10 +31,15 @@ spamwall is a separate community project and is not made by or affiliated with S
 | [`spamblocker/rules-default.gz`](spamblocker/rules-default.gz) | Only the Regex Settings category: allow rules and default block rules |
 | [`spamblocker/rules-strict.gz`](spamblocker/rules-strict.gz) | `rules-default` plus IN-1600 (bank and government service calls) |
 | [`spamblocker/complete.gz`](spamblocker/complete.gz) | `settings` plus `rules-default`, for a one-tap full setup |
+| [`spamblocker/types/<ID>.gz`](spamblocker/types/) | One block pattern plus the allow rules (Regex Settings only), for blocking just one kind of call |
 | [`rules/in/`](rules/in/) | One file per pattern in `allow/`, `block/` and `optional/`, plus [`allow-apps.txt`](rules/in/allow-apps.txt) |
 | [`rules/in/patterns.md`](rules/in/patterns.md) | Table of every pattern, generated from the files |
 
 Each `.gz` has a readable `.json` twin.
+
+**What can be combined:** `settings` + any ONE rules file (`rules-default`, `rules-strict` or one `types/` file) is fine. Two rules files do not stack: the second replaces the first, and also deletes your own number rules. `complete` already has settings and default rules.
+
+**Short version of the caveats:** settings never touch number rules; rules never touch settings. Importing `settings.gz` replaces your Recent Apps list and allow switches. Export a backup first, it is your undo. Not tested on every phone and SpamBlocker version, so report problems as issues. Details: [docs/IMPORT.md](docs/IMPORT.md).
 
 **Releases:** download the files from the [latest release](../../releases/latest).
 

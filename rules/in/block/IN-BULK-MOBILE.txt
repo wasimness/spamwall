@@ -1,4 +1,4 @@
-# spamwall India BLOCK pattern (national number without +91 or leading 0)
+# SpamWall India BLOCK pattern (national number without +91 or leading 0)
 # Blocks: mobile number blocks used for bulk telemarketing.
 # Source: clustered from community spam reports.
 # False-positive risk: medium. Mobile blocks can be reassigned to ordinary users.

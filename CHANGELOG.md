@@ -10,11 +10,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 - Separate import files: `settings.gz` (Others), `rules-default.gz` and `rules-strict.gz` (Regex Settings), and `complete.gz` (both), each with a readable `.json` twin.
+- Per-type import files `spamblocker/types/<ID>.gz` (one block rule plus the allow rules).
 - `docs/IMPORT.md`: which file to pick, step-by-step import, nuances and manual steps.
 - `rules/in/patterns.md`, a generated table of every pattern.
 - Checks for file header comments, IDs matching file names and shared priorities.
 
 ### Changed
+- Display name is now SpamWall in prose, banner and rule descriptions.
 - Rule sources split into one file per pattern under `rules/in/allow/`, `block/` and `optional/`.
 - README Quick start shortened; added a Files table and a Releases line.
 - Removed `spamwall-in*.{gz,json}` (replaced by the files above).

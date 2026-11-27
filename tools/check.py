@@ -46,7 +46,7 @@ for f in ROOT.rglob("*"):
 
 
 def gen():
-    paths = list((ROOT / "spamblocker").glob("*")) + list((ROOT / "rules").rglob("patterns.md"))
+    paths = [p for p in (ROOT / "spamblocker").rglob("*") if p.is_file()] + list((ROOT / "rules").rglob("patterns.md"))
     return {str(p.relative_to(ROOT)): p.read_bytes() for p in paths}
 
 

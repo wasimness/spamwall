@@ -1,4 +1,4 @@
-# spamwall India ALLOW pattern (national number without +91 or leading 0)
+# SpamWall India ALLOW pattern (national number without +91 or leading 0)
 # Allows: Amazon India customer service.
 # Source: public number.
 # False-positive risk: low.

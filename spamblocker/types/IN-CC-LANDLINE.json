@@ -1,0 +1,62 @@
+{
+ "categories": {
+  "all": [
+   "REGEX_RULES"
+  ]
+ },
+ "numberRules": {
+  "rules": [
+   {
+    "id": 100,
+    "pattern": "^1601\\d{6}$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "SpamWall IN-1601: Official series for utilities, courier and logistics (deliveries)",
+    "priority": 15,
+    "isBlacklist": false,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   },
+   {
+    "id": 101,
+    "pattern": "^2263257863$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "SpamWall IN-AMAZON: Amazon India customer service",
+    "priority": 15,
+    "isBlacklist": false,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   },
+   {
+    "id": 200,
+    "pattern": "^(1725|2250|2269|3366|3368|3371|4071|7935|7969|7971)\\d{6}$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "SpamWall IN-CC-LANDLINE: Call-centre landline ranges (Chandigarh, Mumbai, Kolkata, Hyderabad, Ahmedabad)",
+    "priority": 5,
+    "isBlacklist": true,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   }
+  ]
+ }
+}

@@ -1,4 +1,4 @@
-# spamwall India BLOCK pattern (national number without +91 or leading 0)
+# SpamWall India BLOCK pattern (national number without +91 or leading 0)
 # Blocks: promotional and telemarketing calls and SMS from the 140 series.
 # Source: TRAI TCCCPR 2018 https://trai.gov.in/release-publication/directions ; RBI circular Jan 2025 https://www.rbi.org.in/scripts/NotificationUser.aspx?Id=12770
 # False-positive risk: low. The series is for promotions only.

@@ -1,8 +1,16 @@
 # Import guide (SpamBlocker)
 
+> **Read this first**
+>
+> - Settings and rules import separately. `settings.gz` only touches app settings (allow switches, Recent Apps) and never your number rules. `rules-*.gz` and `types/*.gz` only touch number rules. `complete.gz` does both.
+> - Number-rule imports do not stack. Each import replaces ALL number rules, including your own and any earlier SpamWall import. Pick ONE: a single type file (blocks only that kind of call) OR `rules-default.gz` / `rules-strict.gz` (all types). For two or three types, import the all-types file, or import one type file and add the other patterns by hand with "New" in Number Rules, copying the regex from `rules/in/block/<ID>.txt`.
+> - Importing `settings.gz` replaces your Recent Apps list and the allow switches.
+> - Always export a backup first; importing it again is the undo.
+> - The maintainer has not tested this on every phone and SpamBlocker version. Report problems as [issues](../../issues).
+
 ## What you need
 
-SpamBlocker for Android, from [F-Droid](https://f-droid.org/packages/spam.blocker/) or the [GitHub releases](https://github.com/aj3423/SpamBlocker/releases). Download the spamwall files from the [latest release](../../releases/latest).
+SpamBlocker for Android, from [F-Droid](https://f-droid.org/packages/spam.blocker/) or the [GitHub releases](https://github.com/aj3423/SpamBlocker/releases). Download the SpamWall files from the [latest release](../../releases/latest).
 
 ## Which file to pick
 
@@ -11,6 +19,7 @@ SpamBlocker for Android, from [F-Droid](https://f-droid.org/packages/spam.blocke
 | `complete.gz` | Settings plus default rules (both categories) | You want a full setup in one tap |
 | `settings.gz` | Only the "Others" category: contacts, STIR, repeated call, dialed, answered, Recent Apps (120 min) | You want the settings without touching your number rules |
 | `rules-default.gz` | Only the "Regex Settings" category: all allow rules and the default block rules | You want the rules without touching your settings |
+| `types/<ID>.gz` | One block pattern (IN-140, IN-CC-LANDLINE, IN-CC-BLR, IN-BULK-MOBILE or IN-1600) plus the allow rules (IN-1601, IN-AMAZON). Regex Settings only | You want to block only that kind of call |
 | `rules-strict.gz` | Same as `rules-default.gz` plus IN-1600 | You also want bank, insurer and government service calls blocked (add your own bank and broker numbers to contacts first) |
 
 Each file also has a readable `.json` twin in `spamblocker/`.
@@ -20,7 +29,7 @@ Each file also has a readable `.json` twin in `spamblocker/`.
 1. In SpamBlocker, open **Settings > Backup > Export** and save a backup of your current setup first.
 2. Download the file you picked to your phone.
 3. Open **Settings > Backup > Import** and pick the file.
-4. In the **Include Settings** dialog, tap a category to move it between Include and Exclude. Keep only the category the file has (Others for `settings.gz`, Regex Settings for `rules-*.gz`, both for `complete.gz`).
+4. In the **Include Settings** dialog, tap a category to move it between Include and Exclude. Keep only the category the file has (Others for `settings.gz`, Regex Settings for `rules-*.gz` and `types/*.gz`, both for `complete.gz`).
 5. Confirm the import.
 
 ## Nuances

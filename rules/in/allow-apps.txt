@@ -1,4 +1,4 @@
-# spamwall - apps whose recent use should let any call through (SpamBlocker "Recent Apps", 120 min)
+# SpamWall - apps whose recent use should let any call through (SpamBlocker "Recent Apps", 120 min)
 # Shopping / e-commerce / live commerce
 in.amazon.mShop.android.shopping    # Amazon
 com.flipkart.android    # Flipkart

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="t d">
-  <title id="t">spamwall</title>
+  <title id="t">SpamWall</title>
   <desc id="d">Pattern-based spam call and SMS blocking rules for Indian numbers</desc>
   <rect width="1200" height="300" fill="#0f172a"/>
   <g fill="#1e293b">
@@ -10,7 +10,7 @@
   <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18" fill="#f87171">
     <text x="772" y="89">^140\d{7}$</text><text x="842" y="143">^(3366|2250)</text><text x="902" y="197">call centres</text>
   </g>
-  <text x="60" y="140" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#f8fafc">spamwall</text>
+  <text x="60" y="140" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#f8fafc">SpamWall</text>
   <text x="62" y="186" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#94a3b8">Spam call and SMS block patterns for India (+91)</text>
   <text x="62" y="226" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" fill="#38bdf8">One-click import for SpamBlocker</text>
 </svg>

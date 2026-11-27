@@ -1,4 +1,4 @@
-# spamwall India BLOCK pattern (national number without +91 or leading 0)
+# SpamWall India BLOCK pattern (national number without +91 or leading 0)
 # Blocks: call-centre landline ranges in Chandigarh, Mumbai, Kolkata, Hyderabad and Ahmedabad.
 # Source: clustered from community spam reports.
 # False-positive risk: medium. Ranges are narrow but a real business in them would be blocked; use an unblock request.
