@@ -98,18 +98,18 @@ blocks = {p.stem for k in ("block", "optional") for p in (ROOT / "rules" / "in" 
 if blocks != set(group_of):
     errors.append(f"patterns without a valid group: {sorted(blocks - set(group_of))}")
 sb = ROOT / "spamblocker"
-expected_files = {f"{n}.{e}" for n in ["spamblocker-full-setup", "spamblocker-settings", "spamblocker-all-rules"] + [f"spamblocker-{g}" for g in GROUPS] for e in ("gz", "json")}
+expected_files = {f"{n}.{e}" for n in ["spamwall-full-setup", "spamwall-settings", "spamwall-all-rules"] + [f"spamwall-{g}" for g in GROUPS] for e in ("gz", "json")}
 if {p.name for p in sb.glob("*")} != expected_files:
-    errors.append("spamblocker/ must hold exactly spamblocker-full-setup, spamblocker-settings, spamblocker-all-rules and one spamblocker-<group> file (gz + json)")
+    errors.append("spamblocker/ must hold exactly spamwall-full-setup, spamwall-settings, spamwall-all-rules and one spamwall-<group> file (gz + json)")
 allow_ids = {r["id"] for r in build.read_dir(ROOT / "rules" / "in" / "allow")}
 for g in GROUPS:
     want = {i for i, gg in group_of.items() if gg == g}
-    rr = json.loads((sb / f"spamblocker-{g}.json").read_text(encoding="utf-8"))["numberRules"]["rules"]
+    rr = json.loads((sb / f"spamwall-{g}.json").read_text(encoding="utf-8"))["numberRules"]["rules"]
     got_b = {m.group(1) for r in rr if r["isBlacklist"] for m in [re.match(r"SpamWall (\S+):", r["description"])] if m}
     got_a = {m.group(1) for r in rr if not r["isBlacklist"] for m in [re.match(r"SpamWall (\S+):", r["description"])] if m}
     if got_b != want or got_a != allow_ids or len(rr) != len(want) + len(allow_ids):
-        errors.append(f"spamblocker-{g}.json must hold exactly its block rules {sorted(want)} plus the allow rules")
-d = json.loads((ROOT / "spamblocker" / "spamblocker-full-setup.json").read_text(encoding="utf-8"))
+        errors.append(f"spamwall-{g}.json must hold exactly its block rules {sorted(want)} plus the allow rules")
+d = json.loads((ROOT / "spamblocker" / "spamwall-full-setup.json").read_text(encoding="utf-8"))
 rl = d["numberRules"]["rules"]
 shared = {r["priority"] for r in rl if r["isBlacklist"]} & {r["priority"] for r in rl if not r["isBlacklist"]}
 if shared:

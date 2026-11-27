@@ -1,7 +1,7 @@
 """Build the SpamBlocker import files from rules/<country>/ and write patterns.md.
 
 Usage: python -I tools/build_spamblocker.py
-Writes spamblocker/{spamblocker-full-setup,spamblocker-settings,spamblocker-all-rules,spamblocker-<group>}.{gz,json},
+Writes spamblocker/{spamwall-full-setup,spamwall-settings,spamwall-all-rules,spamwall-<group>}.{gz,json},
 raw/spamwall-<cc>.{csv,json,md} and rules/<cc>/patterns.md. Old spamwall-*.{gz,json} files are removed.
 """
 import csv
@@ -99,12 +99,12 @@ def files(d):
     s = settings(d)
     default = group_rules(d, DEFAULT_GROUPS)
     out = {
-        "spamblocker-full-setup": {**s, "categories": {"all": ["OTHERS", "REGEX_RULES"]}, **default},
-        "spamblocker-settings": s,
-        "spamblocker-all-rules": {"categories": {"all": ["REGEX_RULES"]}, **default},
+        "spamwall-full-setup": {**s, "categories": {"all": ["OTHERS", "REGEX_RULES"]}, **default},
+        "spamwall-settings": s,
+        "spamwall-all-rules": {"categories": {"all": ["REGEX_RULES"]}, **default},
     }
     for g in GROUPS:
-        out[f"spamblocker-{g}"] = {"categories": {"all": ["REGEX_RULES"]}, **group_rules(d, [g])}
+        out[f"spamwall-{g}"] = {"categories": {"all": ["REGEX_RULES"]}, **group_rules(d, [g])}
     return out
 
 
