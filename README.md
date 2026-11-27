@@ -7,6 +7,16 @@
 It blocks whole number ranges used by telemarketers and call centres instead of single numbers. Every rule filters both calls and SMS. Calls and messages from shopping, delivery, ride and payment apps, from your contacts, and from official service lines are never blocked.
 
 > SMS filtering works only when **SMS** is switched on under *Settings > Screening* in SpamBlocker; follow the setup prompt it shows.
+## The app: SpamBlocker
+
+spamwall's import files are made for **[SpamBlocker](https://github.com/aj3423/SpamBlocker)**, a free, open-source call and SMS blocker for Android by aj3423. It is the app the maintainer uses every day with these rules.
+
+- Get it from [F-Droid](https://f-droid.org/packages/spam.blocker/) or the [GitHub releases page](https://github.com/aj3423/SpamBlocker/releases).
+- It runs on your phone with no account, and number checks happen on the device.
+- Questions about the app itself go to the [SpamBlocker repository](https://github.com/aj3423/SpamBlocker/issues); questions about these rules go [here](../../issues).
+
+spamwall is a separate community project and is not made by or affiliated with SpamBlocker.
+
 ## Quick start (SpamBlocker)
 
 1. In SpamBlocker, export a backup first: **Settings > Backup > Export**. An import replaces your number rules.
