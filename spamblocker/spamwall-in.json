@@ -1,0 +1,142 @@
+{
+ "categories": {
+  "all": [
+   "OTHERS",
+   "REGEX_RULES"
+  ]
+ },
+ "contacts": {
+  "enabled": true,
+  "isExcusive": false,
+  "permissivePriority": 10,
+  "strictPriority": 0
+ },
+ "stir": {
+  "enabled": true,
+  "includeUnverified": false,
+  "strictPriority": 0
+ },
+ "repeatedCall": {
+  "enabled": true,
+  "times": 1,
+  "inXMin": 5
+ },
+ "dialed": {
+  "enabled": true,
+  "smsEnabled": true,
+  "always": false,
+  "inXDay": 7
+ },
+ "answered": {
+  "warningAcknowledged": true,
+  "enabled": true,
+  "minDuration": 15,
+  "inXDay": 7
+ },
+ "numberRules": {
+  "rules": [
+   {
+    "id": 100,
+    "pattern": "^1601\\d{6}$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "spamwall IN-1601: Official series for utilities, courier and logistics (deliveries)",
+    "priority": 15,
+    "isBlacklist": false,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   },
+   {
+    "id": 101,
+    "pattern": "^2263257863$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "spamwall IN-AMAZON: Amazon India customer service",
+    "priority": 15,
+    "isBlacklist": false,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   },
+   {
+    "id": 200,
+    "pattern": "^140\\d{7}$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "spamwall IN-140: Promotional / telemarketing series",
+    "priority": 5,
+    "isBlacklist": true,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   },
+   {
+    "id": 201,
+    "pattern": "^(1725|2250|2269|3366|3368|3371|4071|7935|7969|7971)\\d{6}$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "spamwall IN-CC-LANDLINE: Call-centre landline ranges (Chandigarh, Mumbai, Kolkata, Hyderabad, Ahmedabad)",
+    "priority": 5,
+    "isBlacklist": true,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   },
+   {
+    "id": 202,
+    "pattern": "^(803710|803720|804795|804819|806935|806954|806985)\\d{4}$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "spamwall IN-CC-BLR: Bengaluru call-centre blocks",
+    "priority": 5,
+    "isBlacklist": true,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   },
+   {
+    "id": 203,
+    "pattern": "^(657350|731361|914714|922807|942209|948470)\\d{4}$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "spamwall IN-BULK-MOBILE: Bulk telemarketing mobile ranges",
+    "priority": 5,
+    "isBlacklist": true,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   }
+  ]
+ }
+}

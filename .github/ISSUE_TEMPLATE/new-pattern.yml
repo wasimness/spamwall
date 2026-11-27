@@ -1,0 +1,20 @@
+name: New spam pattern
+description: Suggest a number range that sends spam calls.
+labels: [new-pattern]
+body:
+  - type: input
+    id: country
+    attributes: {label: Country, placeholder: IN}
+    validations: {required: true}
+  - type: textarea
+    id: numbers
+    attributes:
+      label: Example numbers (at least 3 from the same range)
+      description: Spam numbers only. Never post a private person's number.
+    validations: {required: true}
+  - type: textarea
+    id: what
+    attributes:
+      label: What the calls are about
+      description: For example loans, credit cards, insurance, real estate, robocalls.
+    validations: {required: true}

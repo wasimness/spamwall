@@ -1,0 +1,23 @@
+# spamwall - apps whose recent use should let any call through (SpamBlocker "Recent Apps", 120 min)
+# Shopping / e-commerce / live commerce
+in.amazon.mShop.android.shopping    # Amazon
+com.flipkart.android    # Flipkart
+com.myntra.android    # Myntra
+com.meesho.supply    # Meesho
+com.jio.jiomart    # JioMart
+com.nykaa.android    # Nykaa (verify package)
+# Quick commerce / food delivery
+in.swiggy.android    # Swiggy
+com.application.zomato    # Zomato
+com.grofers.customerapp    # Blinkit
+com.zeptoconsumerapp    # Zepto
+com.bigbasket.mobileapp    # BigBasket
+# Rides
+com.ubercab    # Uber
+com.rapido.passenger    # Rapido
+com.olacabs.customer    # Ola
+# Payments / telecom
+com.phonepe.app    # PhonePe
+net.one97.paytm    # Paytm
+com.google.android.apps.nbu.paisa.user    # Google Pay
+com.jio.myjio    # MyJio

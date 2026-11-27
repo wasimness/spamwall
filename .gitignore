@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# Private data: never commit personal backups, call logs or contacts
+*.local.*
+private/
+backups/
+*call*log*
+*contacts*
+SpamBlocker.*.gz
+*.env
+.env*
+*.key
+*token*

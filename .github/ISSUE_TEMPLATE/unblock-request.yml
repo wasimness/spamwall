@@ -1,0 +1,27 @@
+name: Unblock request (blocked by mistake)
+description: A legitimate business or service is blocked by a spamwall rule.
+labels: [unblock]
+body:
+  - type: input
+    id: number
+    attributes:
+      label: Number or first digits
+      description: For example 1600123xxx or 080-6xxx. Do not post personal numbers.
+    validations: {required: true}
+  - type: input
+    id: who
+    attributes:
+      label: Company or service
+      description: For example a courier, bank, shop or delivery app.
+    validations: {required: true}
+  - type: input
+    id: rule
+    attributes:
+      label: Rule ID that blocked it (if shown)
+      description: SpamBlocker shows it in the call log, for example "spamwall IN-CC-LANDLINE".
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it is legitimate
+      description: Link to the company's official contact page if possible.
+    validations: {required: true}
