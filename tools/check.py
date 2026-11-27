@@ -1,12 +1,17 @@
 """CI checks: regexes compile, no allow/block overlap on official series,
 no personal-looking data, every pattern file is well formed, and generated
 files match the rule sources."""
-import json, re, subprocess, sys
+import importlib.util, json, re, subprocess, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 errors = []
 ids = {}
+group_of = {}
+spec = importlib.util.spec_from_file_location("build", ROOT / "tools" / "build_spamblocker.py")
+build = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(build)
+GROUPS = build.GROUPS
 for txt in (ROOT / "rules").rglob("*.txt"):
     folder = txt.parent.name
     if folder == "numbers":
@@ -33,6 +38,14 @@ for txt in (ROOT / "rules").rglob("*.txt"):
         ids[parts[0]] = txt
         if folder == "block" and (re.match(s, "1600000000") or re.match(s, "1601000000")):
             errors.append(f"{txt}:{n} blocks an official 1600/1601 number")
+    if folder in {"block", "optional"}:
+        gm = re.search(r"^# Group:\s*(\S+)\s*$", text, re.M)
+        if not gm:
+            errors.append(f"{txt}: header comment missing '# Group: <group>'")
+        elif gm.group(1) not in GROUPS:
+            errors.append(f"{txt}: unknown group {gm.group(1)}")
+        else:
+            group_of[txt.stem] = gm.group(1)
     if folder in {"allow", "block", "optional"}:
         if n_rules != 1:
             errors.append(f"{txt}: must hold exactly one pattern line")
@@ -80,6 +93,22 @@ for r in raw["rules"]:
             re.compile(r["value"])
         except re.error as e:
             errors.append(f"raw: bad regex {r['id']}: {e}")
+# every block pattern is in exactly one valid group (one file per pattern, one Group line)
+blocks = {p.stem for k in ("block", "optional") for p in (ROOT / "rules" / "in" / k).glob("*.txt")}
+if blocks != set(group_of):
+    errors.append(f"patterns without a valid group: {sorted(blocks - set(group_of))}")
+sb = ROOT / "spamblocker"
+expected_files = {f"{n}.{e}" for n in ["complete", "settings", "all-rules"] + [f"group-{g}" for g in GROUPS] for e in ("gz", "json")}
+if {p.name for p in sb.glob("*")} != expected_files:
+    errors.append("spamblocker/ must hold exactly complete, settings, all-rules and one group-<group> file (gz + json)")
+allow_ids = {r["id"] for r in build.read_dir(ROOT / "rules" / "in" / "allow")}
+for g in GROUPS:
+    want = {i for i, gg in group_of.items() if gg == g}
+    rr = json.loads((sb / f"group-{g}.json").read_text(encoding="utf-8"))["numberRules"]["rules"]
+    got_b = {m.group(1) for r in rr if r["isBlacklist"] for m in [re.match(r"SpamWall (\S+):", r["description"])] if m}
+    got_a = {m.group(1) for r in rr if not r["isBlacklist"] for m in [re.match(r"SpamWall (\S+):", r["description"])] if m}
+    if got_b != want or got_a != allow_ids or len(rr) != len(want) + len(allow_ids):
+        errors.append(f"group-{g}.json must hold exactly its block rules {sorted(want)} plus the allow rules")
 d = json.loads((ROOT / "spamblocker" / "complete.json").read_text(encoding="utf-8"))
 rl = d["numberRules"]["rules"]
 shared = {r["priority"] for r in rl if r["isBlacklist"]} & {r["priority"] for r in rl if not r["isBlacklist"]}

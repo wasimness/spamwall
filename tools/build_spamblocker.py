@@ -1,7 +1,7 @@
 """Build the SpamBlocker import files from rules/<country>/ and write patterns.md.
 
 Usage: python -I tools/build_spamblocker.py
-Writes spamblocker/{settings,rules-default,rules-strict,complete}.{gz,json},
+Writes spamblocker/{complete,settings,all-rules,group-<group>}.{gz,json},
 raw/spamwall-<cc>.{csv,json,md} and rules/<cc>/patterns.md. Old spamwall-*.{gz,json} files are removed.
 """
 import csv
@@ -22,6 +22,20 @@ FLAGS_CALL_AND_SMS = 3
 REGEX_FLAGS = 8192
 
 
+GROUPS = {  # group slug -> label; the order is the order of the group files
+    "telemarketing": "Promo and telemarketing calls",
+    "call-centres": "Call-centre ranges",
+    "spam-mobiles": "Spam mobile ranges",
+    "banks-govt": "Bank and government calls (optional)",
+}
+DEFAULT_GROUPS = ["telemarketing", "call-centres", "spam-mobiles"]
+
+
+def read_group(path):
+    m = re.search(r"^# Group:\s*(\S+)\s*$", path.read_text(encoding="utf-8"), re.M)
+    return m.group(1) if m else ""
+
+
 def read_rules(path):
     rules = []
     if not path.exists():
@@ -33,6 +47,7 @@ def read_rules(path):
         pattern, _, note = line.partition("#")
         parts = [p.strip() for p in note.split("|")]
         rules.append({
+            "group": read_group(path),
             "pattern": pattern.strip(), "id": parts[0],
             "what": parts[1] if len(parts) > 1 else "",
             "source": parts[2] if len(parts) > 2 else "",
@@ -71,37 +86,26 @@ def settings(d):
     }
 
 
-def rules_part(d, strict):
-    allow, block = read_dir(d / "allow"), read_dir(d / "block")
-    if strict:
-        block += read_dir(d / "optional")
+def group_rules(d, groups):
+    """Allow rules plus every block/optional rule whose group is in groups."""
+    allow = read_dir(d / "allow")
+    block = [r for kind in ("block", "optional") for r in read_dir(d / kind) if r["group"] in groups]
     rules = [rule(i + 100, r, False) for i, r in enumerate(allow)]
     rules += [rule(i + 200, r, True) for i, r in enumerate(block)]
     return {"numberRules": {"rules": rules}}
 
 
-def type_files(d):
-    out = {}
-    allow = read_dir(d / "allow")
-    for kind in ("block", "optional"):
-        for f in sorted((d / kind).glob("*.txt")):
-            rs = read_rules(f)
-            rules = [rule(i + 100, r, False) for i, r in enumerate(allow)]
-            rules += [rule(i + 200, r, True) for i, r in enumerate(rs)]
-            out[f"types/{f.stem}"] = {"categories": {"all": ["REGEX_RULES"]}, "numberRules": {"rules": rules}}
-    return out
-
-
 def files(d):
     s = settings(d)
-    default, strict = rules_part(d, False), rules_part(d, True)
-    return {
-        "settings": s,
-        "rules-default": {"categories": {"all": ["REGEX_RULES"]}, **default},
-        "rules-strict": {"categories": {"all": ["REGEX_RULES"]}, **strict},
+    default = group_rules(d, DEFAULT_GROUPS)
+    out = {
         "complete": {**s, "categories": {"all": ["OTHERS", "REGEX_RULES"]}, **default},
-        **type_files(d),
+        "settings": s,
+        "all-rules": {"categories": {"all": ["REGEX_RULES"]}, **default},
     }
+    for g in GROUPS:
+        out[f"group-{g}"] = {"categories": {"all": ["REGEX_RULES"]}, **group_rules(d, [g])}
+    return out
 
 
 def patterns_md(cc, d):
@@ -128,15 +132,15 @@ def raw_rows(d):
     for kind, prio in (("allow", ALLOW_PRIORITY), ("block", BLOCK_PRIORITY), ("optional", BLOCK_PRIORITY)):
         for r in read_dir(d / kind):
             rows.append({"type": kind, "id": r["id"], "kind": "pattern", "value": r["pattern"],
-                         "description": r["what"], "source": r["source"], "priority": prio})
+                         "description": r["what"], "source": r["source"], "priority": prio, "group": r["group"]})
     for n in read_numbers(d):
         rows.append({"type": "block", "id": "IN-REPORTED-BUSINESS", "kind": "number", "value": n,
                      "description": "Business number reported as spam", "source": "community spam reports",
-                     "priority": BLOCK_PRIORITY})
+                     "priority": BLOCK_PRIORITY, "group": ""})
     return rows
 
 
-COLS = ["type", "id", "kind", "value", "description", "source", "priority"]
+COLS = ["type", "id", "kind", "value", "description", "source", "priority", "group"]
 
 
 def raw_files(cc, d):
@@ -156,14 +160,13 @@ def raw_files(cc, d):
           "| " + " | ".join(COLS) + " |", "|" + "---|" * len(COLS)]
     for r in rows:
         v = f"`{esc(r['value'])}`"
-        md.append("| " + " | ".join([r["type"], r["id"], r["kind"], v, esc(r["description"]), esc(r["source"]), str(r["priority"])]) + " |")
+        md.append("| " + " | ".join([r["type"], r["id"], r["kind"], v, esc(r["description"]), esc(r["source"]), str(r["priority"]), r["group"]]) + " |")
     return {f"spamwall-{cc}.csv": buf.getvalue(), f"spamwall-{cc}.json": js, f"spamwall-{cc}.md": "\n".join(md) + "\n"}
 
 
 def main():
     OUT.mkdir(exist_ok=True)
-    (OUT / "types").mkdir(exist_ok=True)
-    for old in list(OUT.glob("spamwall-*")) + list((OUT / "types").glob("*")):
+    for old in OUT.glob("*"):
         old.unlink()
     for cc_dir in sorted(p for p in (ROOT / "rules").iterdir() if p.is_dir()):
         for name, obj in files(cc_dir).items():

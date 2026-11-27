@@ -15,7 +15,8 @@
    "value": "^1601\\d{6}$",
    "description": "Official series for utilities, courier and logistics (deliveries)",
    "source": "TRAI Direction 10-08-2026",
-   "priority": 15
+   "priority": 15,
+   "group": ""
   },
   {
    "type": "allow",
@@ -24,7 +25,8 @@
    "value": "^2263257863$",
    "description": "Amazon India customer service",
    "source": "public number",
-   "priority": 15
+   "priority": 15,
+   "group": ""
   },
   {
    "type": "block",
@@ -33,7 +35,8 @@
    "value": "^140\\d{7}$",
    "description": "Promotional / telemarketing series",
    "source": "TRAI TCCCPR 2018; RBI circular 2025-01 (140 = promotional only)",
-   "priority": 5
+   "priority": 5,
+   "group": "telemarketing"
   },
   {
    "type": "block",
@@ -42,7 +45,8 @@
    "value": "^(657350|731361|914714|922807|942209|948470)\\d{4}$",
    "description": "Bulk telemarketing mobile ranges",
    "source": "clustered from community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": "spam-mobiles"
   },
   {
    "type": "block",
@@ -51,7 +55,8 @@
    "value": "^(803710|803720|804795|804819|806935|806954|806985)\\d{4}$",
    "description": "Bengaluru call-centre blocks",
    "source": "clustered from community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": "call-centres"
   },
   {
    "type": "block",
@@ -60,7 +65,8 @@
    "value": "^(1725|2250|2269|3366|3368|3371|4071|7935|7969|7971)\\d{6}$",
    "description": "Call-centre landline ranges (Chandigarh, Mumbai, Kolkata, Hyderabad, Ahmedabad)",
    "source": "clustered from community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": "call-centres"
   },
   {
    "type": "optional",
@@ -69,7 +75,8 @@
    "value": "^1600\\d{6}$",
    "description": "Official BFSI + Government service/transactional series. Blocks REAL bank, insurer, broker and govt calls too. Enable only if you add your own banks to allow.txt",
    "source": "TRAI Direction (PIB PRID 2191647)",
-   "priority": 5
+   "priority": 5,
+   "group": "banks-govt"
   },
   {
    "type": "block",
@@ -78,7 +85,8 @@
    "value": "1135137600",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -87,7 +95,8 @@
    "value": "1135139000",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -96,7 +105,8 @@
    "value": "1135354406",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -105,7 +115,8 @@
    "value": "1143079806",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -114,7 +125,8 @@
    "value": "1169116246",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -123,7 +135,8 @@
    "value": "1169116276",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -132,7 +145,8 @@
    "value": "1169123061",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -141,7 +155,8 @@
    "value": "1169123067",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -150,7 +165,8 @@
    "value": "1169123073",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -159,7 +175,8 @@
    "value": "1169123077",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -168,7 +185,8 @@
    "value": "1171638728",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -177,7 +195,8 @@
    "value": "1203127415",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -186,7 +205,8 @@
    "value": "1205083920",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -195,7 +215,8 @@
    "value": "1205168718",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -204,7 +225,8 @@
    "value": "1205173629",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -213,7 +235,8 @@
    "value": "1205173679",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -222,7 +245,8 @@
    "value": "1206435655",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -231,7 +255,8 @@
    "value": "1206435785",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -240,7 +265,8 @@
    "value": "1206436017",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -249,7 +275,8 @@
    "value": "1206916334",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -258,7 +285,8 @@
    "value": "1206916340",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -267,7 +295,8 @@
    "value": "1206916384",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -276,7 +305,8 @@
    "value": "1206916404",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -285,7 +315,8 @@
    "value": "1206916456",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -294,7 +325,8 @@
    "value": "1206924342",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -303,7 +335,8 @@
    "value": "1244180472",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -312,7 +345,8 @@
    "value": "1244790463",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -321,7 +355,8 @@
    "value": "1244790469",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -330,7 +365,8 @@
    "value": "1245148270",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -339,7 +375,8 @@
    "value": "1353501240",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -348,7 +385,8 @@
    "value": "1353501248",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -357,7 +395,8 @@
    "value": "1414762633",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -366,7 +405,8 @@
    "value": "1416180507",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -375,7 +415,8 @@
    "value": "1416180559",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -384,7 +425,8 @@
    "value": "1600318752",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -393,7 +435,8 @@
    "value": "1726741521",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -402,7 +445,8 @@
    "value": "2045907791",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -411,7 +455,8 @@
    "value": "2048566470",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -420,7 +465,8 @@
    "value": "2067451410",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -429,7 +475,8 @@
    "value": "2067801163",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -438,7 +485,8 @@
    "value": "2067874503",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -447,7 +495,8 @@
    "value": "2067874970",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -456,7 +505,8 @@
    "value": "2068283912",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -465,7 +515,8 @@
    "value": "2069137002",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -474,7 +525,8 @@
    "value": "2071243006",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -483,7 +535,8 @@
    "value": "2235018668",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -492,7 +545,8 @@
    "value": "2243691029",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -501,7 +555,8 @@
    "value": "2245870590",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -510,7 +565,8 @@
    "value": "2268539628",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -519,7 +575,8 @@
    "value": "2268700283",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -528,7 +585,8 @@
    "value": "2423351750",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -537,7 +595,8 @@
    "value": "2488715097",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -546,7 +605,8 @@
    "value": "2653103252",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -555,7 +615,8 @@
    "value": "3335002601",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -564,7 +625,8 @@
    "value": "3335302610",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -573,7 +635,8 @@
    "value": "3340222381",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -582,7 +645,8 @@
    "value": "3340582902",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -591,7 +655,8 @@
    "value": "3340582923",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -600,7 +665,8 @@
    "value": "3340912900",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -609,7 +675,8 @@
    "value": "3340912932",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -618,7 +685,8 @@
    "value": "3340912946",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -627,7 +695,8 @@
    "value": "3340927234",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -636,7 +705,8 @@
    "value": "3340927334",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -645,7 +715,8 @@
    "value": "3344053501",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -654,7 +725,8 @@
    "value": "3344453585",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -663,7 +735,8 @@
    "value": "3348072549",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -672,7 +745,8 @@
    "value": "3349495947",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -681,7 +755,8 @@
    "value": "3361210639",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -690,7 +765,8 @@
    "value": "3361253369",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -699,7 +775,8 @@
    "value": "3361254412",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -708,7 +785,8 @@
    "value": "3361254428",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -717,7 +795,8 @@
    "value": "3361367329",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -726,7 +805,8 @@
    "value": "3369051308",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -735,7 +815,8 @@
    "value": "3369068433",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -744,7 +825,8 @@
    "value": "3369093908",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -753,7 +835,8 @@
    "value": "3369095418",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -762,7 +845,8 @@
    "value": "3369096046",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -771,7 +855,8 @@
    "value": "4038021223",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -780,7 +865,8 @@
    "value": "4069654518",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -789,7 +875,8 @@
    "value": "4069654612",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -798,7 +885,8 @@
    "value": "4069658515",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -807,7 +895,8 @@
    "value": "4461703549",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -816,7 +905,8 @@
    "value": "4471637887",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -825,7 +915,8 @@
    "value": "4471894908",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -834,7 +925,8 @@
    "value": "5227159327",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -843,7 +935,8 @@
    "value": "5227159533",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -852,7 +945,8 @@
    "value": "5227165134",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -861,7 +955,8 @@
    "value": "5227185470",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -870,7 +965,8 @@
    "value": "5227187119",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -879,7 +975,8 @@
    "value": "5227187120",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   },
   {
    "type": "block",
@@ -888,7 +985,8 @@
    "value": "5227188859",
    "description": "Business number reported as spam",
    "source": "community spam reports",
-   "priority": 5
+   "priority": 5,
+   "group": ""
   }
  ]
 }

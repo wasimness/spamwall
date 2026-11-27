@@ -1,4 +1,5 @@
 # SpamWall India BLOCK pattern (national number without +91 or leading 0)
+# Group: call-centres
 # Blocks: narrow Bengaluru call-centre blocks (not all of 080).
 # Source: clustered from community spam reports.
 # False-positive risk: medium. Delivery apps call from other 080 numbers, which are not blocked.
