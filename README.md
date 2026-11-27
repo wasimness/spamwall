@@ -1,9 +1,12 @@
 # spamwall
 
-Pattern-based spam-call block rules you can import in one click. Built for [SpamBlocker](https://github.com/aj3423/SpamBlocker) on Android; the plain regex lists work in any blocker that accepts regular expressions.
+![spamwall: spam call and SMS block patterns for India](assets/banner.svg)
 
-The first ruleset is **India**. It blocks whole number ranges used by telemarketers and call centres instead of single numbers. Calls from shopping, delivery, ride and payment apps, from your contacts, and from official service lines are never blocked.
+**For Indian phone numbers (+91), calls and SMS.** spamwall is a set of pattern-based block rules you can import in one click. It is built for [SpamBlocker](https://github.com/aj3423/SpamBlocker) on Android; the plain regex lists work in any blocker that accepts regular expressions.
 
+It blocks whole number ranges used by telemarketers and call centres instead of single numbers. Every rule filters both calls and SMS. Calls and messages from shopping, delivery, ride and payment apps, from your contacts, and from official service lines are never blocked.
+
+> SMS filtering works only when **SMS** is switched on under *Settings > Screening* in SpamBlocker (SpamBlocker must be your default SMS app for that).
 ## Quick start (SpamBlocker)
 
 1. In SpamBlocker, export a backup first: **Settings > Backup > Export**. An import replaces your number rules.
