@@ -57,6 +57,7 @@ def build(cc, strict):
         "repeatedCall": {"enabled": True, "times": 1, "inXMin": 5},
         "dialed": {"enabled": True, "smsEnabled": True, "always": False, "inXDay": 7},
         "answered": {"warningAcknowledged": True, "enabled": True, "minDuration": 15, "inXDay": 7},
+        "recentApps": {"list": [{"pkgName": a["pattern"]} for a in read_rules(d / "allow-apps.txt")], "inXMin": 120},
         "numberRules": {"rules": rules},
     }
 

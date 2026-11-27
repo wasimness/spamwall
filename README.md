@@ -22,7 +22,7 @@ spamwall is a separate community project and is not made by or affiliated with S
 1. In SpamBlocker, export a backup first: **Settings > Backup > Export**. An import replaces your number rules.
 2. Download [`spamblocker/spamwall-in.gz`](spamblocker/spamwall-in.gz) to your phone.
 3. **Settings > Backup > Import**, pick the file, keep only **Others** and **Regex Settings** under *Include Settings*, then tap **Import**.
-4. **Settings > Recent Apps**: switch on the apps you use from [`rules/in/allow-apps.txt`](rules/in/allow-apps.txt) and set the time to 120 minutes, so delivery riders and drivers on masked numbers get through.
+4. **Recent Apps** comes pre-filled with the shopping, delivery, ride, payment and government apps in [`rules/in/allow-apps.txt`](rules/in/allow-apps.txt), set to 120 minutes. If you used one of them in the last 2 hours, any call gets through, so delivery riders and drivers on masked numbers reach you. Apps you have not installed are ignored. Add your own bank and broker apps in **Settings > Recent Apps**.
 5. Check that **Contacts**, **Repeated Call**, **Dialed Number** and **Answered Number** are on.
 
 Want bank and insurance service calls blocked too? Use `spamwall-in-strict.gz` instead, and add your own banks' 1600 numbers to your contacts first.
