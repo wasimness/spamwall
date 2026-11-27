@@ -1,3 +1,0 @@
-# spamwall - India ALLOW patterns (checked before block rules)
-^1601\d{6}$    # IN-1601 | Official series for utilities, courier and logistics (deliveries) | TRAI Direction 10-08-2026
-^2263257863$    # IN-AMAZON | Amazon India customer service | public number

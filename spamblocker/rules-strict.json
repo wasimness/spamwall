@@ -1,102 +1,8 @@
 {
  "categories": {
   "all": [
-   "OTHERS",
    "REGEX_RULES"
   ]
- },
- "contacts": {
-  "enabled": true,
-  "isExcusive": false,
-  "permissivePriority": 10,
-  "strictPriority": 0
- },
- "stir": {
-  "enabled": true,
-  "includeUnverified": false,
-  "strictPriority": 0
- },
- "repeatedCall": {
-  "enabled": true,
-  "times": 1,
-  "inXMin": 5
- },
- "dialed": {
-  "enabled": true,
-  "smsEnabled": true,
-  "always": false,
-  "inXDay": 7
- },
- "answered": {
-  "warningAcknowledged": true,
-  "enabled": true,
-  "minDuration": 15,
-  "inXDay": 7
- },
- "recentApps": {
-  "list": [
-   {
-    "pkgName": "in.amazon.mShop.android.shopping"
-   },
-   {
-    "pkgName": "com.flipkart.android"
-   },
-   {
-    "pkgName": "com.myntra.android"
-   },
-   {
-    "pkgName": "com.meesho.supply"
-   },
-   {
-    "pkgName": "com.jio.jiomart"
-   },
-   {
-    "pkgName": "in.swiggy.android"
-   },
-   {
-    "pkgName": "com.application.zomato"
-   },
-   {
-    "pkgName": "com.grofers.customerapp"
-   },
-   {
-    "pkgName": "com.zeptoconsumerapp"
-   },
-   {
-    "pkgName": "com.bigbasket.mobileapp"
-   },
-   {
-    "pkgName": "com.ubercab"
-   },
-   {
-    "pkgName": "com.rapido.passenger"
-   },
-   {
-    "pkgName": "com.olacabs.customer"
-   },
-   {
-    "pkgName": "com.phonepe.app"
-   },
-   {
-    "pkgName": "net.one97.paytm"
-   },
-   {
-    "pkgName": "com.google.android.apps.nbu.paisa.user"
-   },
-   {
-    "pkgName": "com.jio.myjio"
-   },
-   {
-    "pkgName": "com.paypal.android.p2pmobile"
-   },
-   {
-    "pkgName": "com.transferwise.android"
-   },
-   {
-    "pkgName": "in.gov.umang.negd.g2c"
-   }
-  ],
-  "inXMin": 120
  },
  "numberRules": {
   "rules": [
@@ -153,13 +59,13 @@
    },
    {
     "id": 201,
-    "pattern": "^(1725|2250|2269|3366|3368|3371|4071|7935|7969|7971)\\d{6}$",
+    "pattern": "^(657350|731361|914714|922807|942209|948470)\\d{4}$",
     "patternFlags": 8192,
     "patternModeType": 0,
     "patternExtra": "",
     "patternExtraFlags": 0,
     "patternExtraModeType": 0,
-    "description": "spamwall IN-CC-LANDLINE: Call-centre landline ranges (Chandigarh, Mumbai, Kolkata, Hyderabad, Ahmedabad)",
+    "description": "spamwall IN-BULK-MOBILE: Bulk telemarketing mobile ranges",
     "priority": 5,
     "isBlacklist": true,
     "flags": 3,
@@ -187,13 +93,30 @@
    },
    {
     "id": 203,
-    "pattern": "^(657350|731361|914714|922807|942209|948470)\\d{4}$",
+    "pattern": "^(1725|2250|2269|3366|3368|3371|4071|7935|7969|7971)\\d{6}$",
     "patternFlags": 8192,
     "patternModeType": 0,
     "patternExtra": "",
     "patternExtraFlags": 0,
     "patternExtraModeType": 0,
-    "description": "spamwall IN-BULK-MOBILE: Bulk telemarketing mobile ranges",
+    "description": "spamwall IN-CC-LANDLINE: Call-centre landline ranges (Chandigarh, Mumbai, Kolkata, Hyderabad, Ahmedabad)",
+    "priority": 5,
+    "isBlacklist": true,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   },
+   {
+    "id": 204,
+    "pattern": "^1600\\d{6}$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "spamwall IN-1600: Official BFSI + Government service/transactional series. Blocks REAL bank, insurer, broker and govt ca",
     "priority": 5,
     "isBlacklist": true,
     "flags": 3,

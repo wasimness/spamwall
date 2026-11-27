@@ -1,0 +1,6 @@
+# spamwall India BLOCK pattern (national number without +91 or leading 0)
+# Blocks: narrow Bengaluru call-centre blocks (not all of 080).
+# Source: clustered from community spam reports.
+# False-positive risk: medium. Delivery apps call from other 080 numbers, which are not blocked.
+# Format: <regex>    # id | what | source
+^(803710|803720|804795|804819|806935|806954|806985)\d{4}$    # IN-CC-BLR | Bengaluru call-centre blocks | clustered from community spam reports

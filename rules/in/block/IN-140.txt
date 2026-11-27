@@ -1,0 +1,6 @@
+# spamwall India BLOCK pattern (national number without +91 or leading 0)
+# Blocks: promotional and telemarketing calls and SMS from the 140 series.
+# Source: TRAI TCCCPR 2018 https://trai.gov.in/release-publication/directions ; RBI circular Jan 2025 https://www.rbi.org.in/scripts/NotificationUser.aspx?Id=12770
+# False-positive risk: low. The series is for promotions only.
+# Format: <regex>    # id | what | source
+^140\d{7}$    # IN-140 | Promotional / telemarketing series | TRAI TCCCPR 2018; RBI circular 2025-01 (140 = promotional only)
