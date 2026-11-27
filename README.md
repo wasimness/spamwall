@@ -19,30 +19,30 @@ SpamWall is an independent project, not made by or affiliated with SpamBlocker.
 ## Quick start (if you use SpamBlocker)
 
 1. Export a backup first (**Settings > Backup > Export**), because an import replaces your number rules.
-2. Download [`spamblocker/complete.gz`](spamblocker/complete.gz), then **Settings > Backup > Import** and pick it.
+2. Download [`spamblocker/spamblocker-full-setup.gz`](spamblocker/spamblocker-full-setup.gz), then **Settings > Backup > Import** and pick it.
 3. Follow the full guide, including the manual steps the import cannot do: [docs/IMPORT.md](docs/IMPORT.md).
 
 ## Files
 
 | Label | File | Description | Download |
 |---|---|---|---|
-| Everything (recommended) | `complete.gz` | Settings plus all default rules (not the bank group): one-tap full setup | [Download](https://github.com/wasimness/spamwall/releases/latest/download/complete.gz) |
-| App settings only | `settings.gz` | Only the Others category: contacts, STIR, repeated call, dialed, answered, Recent Apps | [Download](https://github.com/wasimness/spamwall/releases/latest/download/settings.gz) |
-| All spam rules | `all-rules.gz` | Allow rules plus the three default groups (not the bank group) | [Download](https://github.com/wasimness/spamwall/releases/latest/download/all-rules.gz) |
-| Promo and telemarketing calls | `group-telemarketing.gz` | Group `telemarketing`: the 140 promotional series, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/group-telemarketing.gz) |
-| Call-centre ranges | `group-call-centres.gz` | Group `call-centres`: call-centre landline and Bengaluru ranges, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/group-call-centres.gz) |
-| Spam mobile ranges | `group-spam-mobiles.gz` | Group `spam-mobiles`: bulk telemarketing mobile ranges, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/group-spam-mobiles.gz) |
-| Bank and government calls (optional) | `group-banks-govt.gz` | Group `banks-govt`: the official 1600 series (also blocks your real bank), plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/group-banks-govt.gz) |
+| Full setup (recommended) | `spamblocker-full-setup.gz` | App settings plus all spam rules in one import | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamblocker-full-setup.gz) |
+| App settings only | `spamblocker-settings.gz` | Only the Others category: contacts, STIR, repeated call, dialed, answered, Recent Apps | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamblocker-settings.gz) |
+| All spam rules | `spamblocker-all-rules.gz` | Allow rules plus the three default groups (not the bank group) | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamblocker-all-rules.gz) |
+| Promo and telemarketing calls | `spamblocker-telemarketing.gz` | Group `telemarketing`: the 140 promotional series, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamblocker-telemarketing.gz) |
+| Call-centre ranges | `spamblocker-call-centres.gz` | Group `call-centres`: call-centre landline and Bengaluru ranges, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamblocker-call-centres.gz) |
+| Spam mobile ranges | `spamblocker-spam-mobiles.gz` | Group `spam-mobiles`: bulk telemarketing mobile ranges, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamblocker-spam-mobiles.gz) |
+| Bank and government calls (optional) | `spamblocker-banks-govt.gz` | Group `banks-govt`: the official 1600 series (also blocks your real bank), plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamblocker-banks-govt.gz) |
 | Raw list (CSV) | `spamwall-in.csv` | Every pattern and business number with its group, for any app or spreadsheet | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamwall-in.csv) |
 | Raw list (JSON) | `spamwall-in.json` | Same data with a meta object, for scripts and AI | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamwall-in.json) |
 
-Groups don't stack in SpamBlocker (each rules import replaces the number rules), so to block two groups, import `all-rules.gz`, or import one group and add the other patterns by hand from `rules/in/`. For all rules plus banks, import `all-rules.gz`, then add the IN-1600 pattern by hand.
+Groups don't stack in SpamBlocker (each rules import replaces the number rules), so to block two groups, import `spamblocker-all-rules.gz`, or import one group and add the other patterns by hand from `rules/in/`. For all rules plus banks, import `spamblocker-all-rules.gz`, then add the IN-1600 pattern by hand.
 
 Each `.gz` has a readable `.json` twin in `spamblocker/`. The raw list also exists as a Markdown table, [`raw/spamwall-in.md`](raw/spamwall-in.md), for reading in the repo (not a release download). Source rules: [`rules/in/`](rules/in/) (one file per pattern in `allow/`, `block/` and `optional/`, each block pattern with a `# Group:` line, plus [`allow-apps.txt`](rules/in/allow-apps.txt) and `numbers/`), table of every pattern: [`rules/in/patterns.md`](rules/in/patterns.md).
 
-**What can be combined:** `settings.gz` + any ONE rules file is fine. `complete.gz` already has settings and all default rules.
+**What can be combined:** `spamblocker-settings.gz` + any ONE rules file is fine. `spamblocker-full-setup.gz` already has settings and all default rules.
 
-**Short version of the caveats:** settings never touch number rules; rules never touch settings. Importing `settings.gz` replaces your Recent Apps list and allow switches. Export a backup first, it is your undo. Not tested on every phone and SpamBlocker version, so report problems as issues. Details: [docs/IMPORT.md](docs/IMPORT.md).
+**Short version of the caveats:** settings never touch number rules; rules never touch settings. Importing `spamblocker-settings.gz` replaces your Recent Apps list and allow switches. Export a backup first, it is your undo. Not tested on every phone and SpamBlocker version, so report problems as issues. Details: [docs/IMPORT.md](docs/IMPORT.md).
 
 **Releases:** download the files from the [latest release](../../releases/latest).
 
@@ -91,7 +91,7 @@ Numbers are matched without `+91` or a leading `0`.
 |---|---|---|---|
 | IN-1600 | `^1600\d{6}$` | Service and transactional calls from banks, insurers, brokers, mutual funds and government | This is the **official** series that regulated entities must use ([TRAI, PIB](https://pib.gov.in/PressReleasePage.aspx?PRID=2191647)). Blocking it also blocks your real bank. |
 
-**Credit card and loan spam:** promotions must come from the 140 series, which is blocked. Official bank calls must come from 1600, which is not blocked by `complete.gz` or `all-rules.gz`. A loan or credit-card pitch from an ordinary mobile or landline breaks TRAI rules; report it in the **Report Spam** app (TRAI DND) and open a *New spam pattern* issue here.
+**Credit card and loan spam:** promotions must come from the 140 series, which is blocked. Official bank calls must come from 1600, which is not blocked by `spamblocker-full-setup.gz` or `spamblocker-all-rules.gz`. A loan or credit-card pitch from an ordinary mobile or landline breaks TRAI rules; report it in the **Report Spam** app (TRAI DND) and open a *New spam pattern* issue here.
 
 ## Blocked by mistake?
 

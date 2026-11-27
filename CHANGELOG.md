@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [0.3.0] - 2026-11-27
 
 ### Changed
-- Downloads reduced to 7 SpamBlocker files in 4 essential groups plus raw CSV/JSON; per-pattern import files removed. Block patterns now carry a `group` (header line and raw `group` column).
+- Downloads reduced to 7 SpamBlocker files (`spamblocker-full-setup`, `-settings`, `-all-rules` and one per group, `spamblocker-<group>`) in 4 essential groups plus raw CSV/JSON; per-pattern import files removed. Block patterns now carry a `group` (header line and raw `group` column).
 
 ### Added
 - Raw, app-agnostic lists in `raw/`: `spamwall-in.csv`, `spamwall-in.json` (with a `meta` object) and `spamwall-in.md`.
