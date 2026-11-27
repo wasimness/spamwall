@@ -1,6 +1,0 @@
-# spamwall - India BLOCK patterns (regex, national number without +91 or leading 0)
-# Format: <regex>    # id | what | source
-^140\d{7}$    # IN-140 | Promotional / telemarketing series | TRAI TCCCPR 2018; RBI circular 2025-01 (140 = promotional only)
-^(1725|2250|2269|3366|3368|3371|4071|7935|7969|7971)\d{6}$    # IN-CC-LANDLINE | Call-centre landline ranges (Chandigarh, Mumbai, Kolkata, Hyderabad, Ahmedabad) | clustered from community spam reports
-^(803710|803720|804795|804819|806935|806954|806985)\d{4}$    # IN-CC-BLR | Bengaluru call-centre blocks | clustered from community spam reports
-^(657350|731361|914714|922807|942209|948470)\d{4}$    # IN-BULK-MOBILE | Bulk telemarketing mobile ranges | clustered from community spam reports

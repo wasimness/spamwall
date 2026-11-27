@@ -1,2 +1,0 @@
-# spamwall - India OPTIONAL block patterns (off by default)
-^1600\d{6}$    # IN-1600 | Official BFSI + Government service/transactional series. Blocks REAL bank, insurer, broker and govt calls too. Enable only if you add your own banks to allow.txt | TRAI Direction (PIB PRID 2191647)

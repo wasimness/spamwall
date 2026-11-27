@@ -1,0 +1,6 @@
+# SpamWall India BLOCK pattern (national number without +91 or leading 0)
+# Blocks: mobile number blocks used for bulk telemarketing.
+# Source: clustered from community spam reports.
+# False-positive risk: medium. Mobile blocks can be reassigned to ordinary users.
+# Format: <regex>    # id | what | source
+^(657350|731361|914714|922807|942209|948470)\d{4}$    # IN-BULK-MOBILE | Bulk telemarketing mobile ranges | clustered from community spam reports

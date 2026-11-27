@@ -1,5 +1,5 @@
 name: Unblock request (blocked by mistake)
-description: A legitimate business or service is blocked by a spamwall rule.
+description: A legitimate business or service is blocked by a SpamWall rule.
 labels: [unblock]
 body:
   - type: input
@@ -18,7 +18,7 @@ body:
     id: rule
     attributes:
       label: Rule ID that blocked it (if shown)
-      description: SpamBlocker shows it in the call log, for example "spamwall IN-CC-LANDLINE".
+      description: SpamBlocker shows it in the call log, for example "SpamWall IN-CC-LANDLINE".
   - type: textarea
     id: why
     attributes:

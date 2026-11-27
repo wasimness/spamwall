@@ -1,0 +1,6 @@
+# SpamWall India BLOCK pattern (national number without +91 or leading 0)
+# Blocks: call-centre landline ranges in Chandigarh, Mumbai, Kolkata, Hyderabad and Ahmedabad.
+# Source: clustered from community spam reports.
+# False-positive risk: medium. Ranges are narrow but a real business in them would be blocked; use an unblock request.
+# Format: <regex>    # id | what | source
+^(1725|2250|2269|3366|3368|3371|4071|7935|7969|7971)\d{6}$    # IN-CC-LANDLINE | Call-centre landline ranges (Chandigarh, Mumbai, Kolkata, Hyderabad, Ahmedabad) | clustered from community spam reports

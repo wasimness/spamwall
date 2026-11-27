@@ -1,0 +1,6 @@
+# SpamWall India OPTIONAL BLOCK pattern (off by default; only in rules-strict)
+# Blocks: official BFSI and government service and transactional series.
+# Source: TRAI Direction, PIB https://pib.gov.in/PressReleasePage.aspx?PRID=2191647
+# False-positive risk: high. Blocks real bank, insurer, broker and government calls. Add your own banks to contacts first.
+# Format: <regex>    # id | what | source
+^1600\d{6}$    # IN-1600 | Official BFSI + Government service/transactional series. Blocks REAL bank, insurer, broker and govt calls too. Enable only if you add your own banks to allow.txt | TRAI Direction (PIB PRID 2191647)

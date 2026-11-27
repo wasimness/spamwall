@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-27
+
+### Added
+- Separate import files: `settings.gz` (Others), `rules-default.gz` and `rules-strict.gz` (Regex Settings), and `complete.gz` (both), each with a readable `.json` twin.
+- Per-type import files `spamblocker/types/<ID>.gz` (one block rule plus the allow rules).
+- `docs/IMPORT.md`: which file to pick, step-by-step import, nuances and manual steps.
+- `rules/in/patterns.md`, a generated table of every pattern.
+- Checks for file header comments, IDs matching file names and shared priorities.
+
+### Changed
+- Display name is now SpamWall in prose, banner and rule descriptions.
+- Rule sources split into one file per pattern under `rules/in/allow/`, `block/` and `optional/`.
+- README Quick start shortened; added a Files table and a Releases line.
+- Removed `spamwall-in*.{gz,json}` (replaced by the files above).
+
 ## [0.1.0] - 2026-11-27
 
 ### Added
@@ -13,5 +28,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - One-click SpamBlocker import files and plain regex lists.
 - Unblock-request and new-pattern issue templates.
 
-[Unreleased]: https://github.com/wasimness/spamwall/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/wasimness/spamwall/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/wasimness/spamwall/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/wasimness/spamwall/releases/tag/v0.1.0

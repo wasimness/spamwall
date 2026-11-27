@@ -1,0 +1,62 @@
+{
+ "categories": {
+  "all": [
+   "REGEX_RULES"
+  ]
+ },
+ "numberRules": {
+  "rules": [
+   {
+    "id": 100,
+    "pattern": "^1601\\d{6}$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "SpamWall IN-1601: Official series for utilities, courier and logistics (deliveries)",
+    "priority": 15,
+    "isBlacklist": false,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   },
+   {
+    "id": 101,
+    "pattern": "^2263257863$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "SpamWall IN-AMAZON: Amazon India customer service",
+    "priority": 15,
+    "isBlacklist": false,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   },
+   {
+    "id": 200,
+    "pattern": "^1600\\d{6}$",
+    "patternFlags": 8192,
+    "patternModeType": 0,
+    "patternExtra": "",
+    "patternExtraFlags": 0,
+    "patternExtraModeType": 0,
+    "description": "SpamWall IN-1600: Official BFSI + Government service/transactional series. Blocks REAL bank, insurer, broker and govt ca",
+    "priority": 5,
+    "isBlacklist": true,
+    "flags": 3,
+    "channel": "Low",
+    "schedule": "",
+    "blockType": 0,
+    "blockTypeConfig": ""
+   }
+  ]
+ }
+}
