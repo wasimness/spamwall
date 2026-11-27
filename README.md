@@ -6,7 +6,7 @@
 
 It blocks whole number ranges used by telemarketers and call centres instead of single numbers. Every rule filters both calls and SMS. Calls and messages from shopping, delivery, ride and payment apps, from your contacts, and from official service lines are never blocked.
 
-> SMS filtering works only when **SMS** is switched on under *Settings > Screening* in SpamBlocker (SpamBlocker must be your default SMS app for that).
+> SMS filtering works only when **SMS** is switched on under *Settings > Screening* in SpamBlocker; follow the setup prompt it shows.
 ## Quick start (SpamBlocker)
 
 1. In SpamBlocker, export a backup first: **Settings > Backup > Export**. An import replaces your number rules.
