@@ -14,15 +14,32 @@ SpamBlocker for Android, from [F-Droid](https://f-droid.org/packages/spam.blocke
 
 ## Which file to pick
 
-| File | What it has | Pick it when |
-|---|---|---|
-| `complete.gz` | Settings plus default rules (both categories) | You want a full setup in one tap |
-| `settings.gz` | Only the "Others" category: contacts, STIR, repeated call, dialed, answered, Recent Apps (120 min) | You want the settings without touching your number rules |
-| `rules-default.gz` | Only the "Regex Settings" category: all allow rules and the default block rules | You want the rules without touching your settings |
-| `types/<ID>.gz` | One block pattern (IN-140, IN-CC-LANDLINE, IN-CC-BLR, IN-BULK-MOBILE or IN-1600) plus the allow rules (IN-1601, IN-AMAZON). Regex Settings only | You want to block only that kind of call |
-| `rules-strict.gz` | Same as `rules-default.gz` plus IN-1600 | You also want bank, insurer and government service calls blocked (add your own bank and broker numbers to contacts first) |
+| Label | File | Description | Download |
+|---|---|---|---|
+| Everything | `complete.gz` | Settings plus default rules, one-tap full setup (SpamBlocker) | [Download](https://github.com/wasimness/spamwall/releases/latest/download/complete.gz) |
+| App settings | `settings.gz` | Only the Others category: contacts, STIR, repeated call, dialed, answered, Recent Apps | [Download](https://github.com/wasimness/spamwall/releases/latest/download/settings.gz) |
+| All rules | `rules-default.gz` | Only the Regex Settings category: allow rules and default block rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/rules-default.gz) |
+| Strict rules | `rules-strict.gz` | `rules-default` plus IN-1600 (bank and government service calls) | [Download](https://github.com/wasimness/spamwall/releases/latest/download/rules-strict.gz) |
+| Promo calls (140) | `IN-140.gz` | Block the 140 promotional series, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/IN-140.gz) |
+| Call-centre landlines | `IN-CC-LANDLINE.gz` | Block call-centre landline ranges, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/IN-CC-LANDLINE.gz) |
+| Bengaluru call centres | `IN-CC-BLR.gz` | Block narrow Bengaluru call-centre blocks, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/IN-CC-BLR.gz) |
+| Bulk telemarketing mobiles | `IN-BULK-MOBILE.gz` | Block bulk telemarketing mobile ranges, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/IN-BULK-MOBILE.gz) |
+| Bank and govt series (1600) | `IN-1600.gz` | Block the official 1600 service series (also blocks your real bank), plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/IN-1600.gz) |
+| Raw list (CSV) | `spamwall-in.csv` | Every pattern and business number, for any app or spreadsheet | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamwall-in.csv) |
+| Raw list (JSON) | `spamwall-in.json` | Same data with a meta object, for scripts and AI | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamwall-in.json) |
+| Raw list (Markdown) | `spamwall-in.md` | Table for manual copying | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamwall-in.md) |
 
-Each file also has a readable `.json` twin in `spamblocker/`.
+Each file also has a readable `.json` twin in `spamblocker/`. Release assets are flat, so every file name is unique.
+
+## Using SpamWall without SpamBlocker
+
+The raw lists in `raw/` (CSV, JSON, Markdown) are app-agnostic: the same rows as the SpamBlocker files, with columns `type,id,kind,value,description,source,priority`. `type` is allow, block or optional; `kind` is `pattern` (a regular expression) or `number` (an exact number). Numbers and patterns match the national number, without +91 or a leading 0.
+
+- **Any blocker or your phone's own block list:** open the CSV or Markdown file and copy what you need. Add `number` rows one by one, or paste them in bulk where the app allows.
+- **Patterns need regex or prefix blocking.** If your app only blocks exact numbers, use the `number` rows. If it supports prefixes, turn simple patterns such as `^140\d{7}$` into the prefix `140`.
+- **Build rules for another app with AI or a script:** feed `spamwall-in.json` (rules plus a `meta` object) to an AI assistant or a script and ask it to produce the format your app imports.
+- **Mobile numbers are left out on purpose.** Individual 10-digit mobile numbers (starting 6 to 9) are never listed, for privacy. Only landline, toll-free and series numbers appear as `number` rows.
+
 
 ## Step-by-step import
 

@@ -25,23 +25,37 @@ SpamWall is a separate community project and is not made by or affiliated with S
 
 ## Files
 
-| File | What it has |
-|---|---|
-| [`spamblocker/settings.gz`](spamblocker/settings.gz) | Only the Others category (contacts, STIR, repeated call, dialed, answered, Recent Apps) |
-| [`spamblocker/rules-default.gz`](spamblocker/rules-default.gz) | Only the Regex Settings category: allow rules and default block rules |
-| [`spamblocker/rules-strict.gz`](spamblocker/rules-strict.gz) | `rules-default` plus IN-1600 (bank and government service calls) |
-| [`spamblocker/complete.gz`](spamblocker/complete.gz) | `settings` plus `rules-default`, for a one-tap full setup |
-| [`spamblocker/types/<ID>.gz`](spamblocker/types/) | One block pattern plus the allow rules (Regex Settings only), for blocking just one kind of call |
-| [`rules/in/`](rules/in/) | One file per pattern in `allow/`, `block/` and `optional/`, plus [`allow-apps.txt`](rules/in/allow-apps.txt) |
-| [`rules/in/patterns.md`](rules/in/patterns.md) | Table of every pattern, generated from the files |
+| Label | File | Description | Download |
+|---|---|---|---|
+| Everything | `complete.gz` | Settings plus default rules, one-tap full setup (SpamBlocker) | [Download](https://github.com/wasimness/spamwall/releases/latest/download/complete.gz) |
+| App settings | `settings.gz` | Only the Others category: contacts, STIR, repeated call, dialed, answered, Recent Apps | [Download](https://github.com/wasimness/spamwall/releases/latest/download/settings.gz) |
+| All rules | `rules-default.gz` | Only the Regex Settings category: allow rules and default block rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/rules-default.gz) |
+| Strict rules | `rules-strict.gz` | `rules-default` plus IN-1600 (bank and government service calls) | [Download](https://github.com/wasimness/spamwall/releases/latest/download/rules-strict.gz) |
+| Promo calls (140) | `IN-140.gz` | Block the 140 promotional series, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/IN-140.gz) |
+| Call-centre landlines | `IN-CC-LANDLINE.gz` | Block call-centre landline ranges, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/IN-CC-LANDLINE.gz) |
+| Bengaluru call centres | `IN-CC-BLR.gz` | Block narrow Bengaluru call-centre blocks, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/IN-CC-BLR.gz) |
+| Bulk telemarketing mobiles | `IN-BULK-MOBILE.gz` | Block bulk telemarketing mobile ranges, plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/IN-BULK-MOBILE.gz) |
+| Bank and govt series (1600) | `IN-1600.gz` | Block the official 1600 service series (also blocks your real bank), plus the allow rules | [Download](https://github.com/wasimness/spamwall/releases/latest/download/IN-1600.gz) |
+| Raw list (CSV) | `spamwall-in.csv` | Every pattern and business number, for any app or spreadsheet | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamwall-in.csv) |
+| Raw list (JSON) | `spamwall-in.json` | Same data with a meta object, for scripts and AI | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamwall-in.json) |
+| Raw list (Markdown) | `spamwall-in.md` | Table for manual copying | [Download](https://github.com/wasimness/spamwall/releases/latest/download/spamwall-in.md) |
 
-Each `.gz` has a readable `.json` twin.
+Each `.gz` has a readable `.json` twin in `spamblocker/`. Source rules: [`rules/in/`](rules/in/) (one file per pattern in `allow/`, `block/` and `optional/`, plus [`allow-apps.txt`](rules/in/allow-apps.txt) and `numbers/`), table of every pattern: [`rules/in/patterns.md`](rules/in/patterns.md).
 
 **What can be combined:** `settings` + any ONE rules file (`rules-default`, `rules-strict` or one `types/` file) is fine. Two rules files do not stack: the second replaces the first, and also deletes your own number rules. `complete` already has settings and default rules.
 
 **Short version of the caveats:** settings never touch number rules; rules never touch settings. Importing `settings.gz` replaces your Recent Apps list and allow switches. Export a backup first, it is your undo. Not tested on every phone and SpamBlocker version, so report problems as issues. Details: [docs/IMPORT.md](docs/IMPORT.md).
 
 **Releases:** download the files from the [latest release](../../releases/latest).
+
+## Using SpamWall without SpamBlocker
+
+The raw lists in `raw/` (CSV, JSON, Markdown) are app-agnostic: the same rows as the SpamBlocker files, with columns `type,id,kind,value,description,source,priority`. `type` is allow, block or optional; `kind` is `pattern` (a regular expression) or `number` (an exact number). Numbers and patterns match the national number, without +91 or a leading 0.
+
+- **Any blocker or your phone's own block list:** open the CSV or Markdown file and copy what you need. Add `number` rows one by one, or paste them in bulk where the app allows.
+- **Patterns need regex or prefix blocking.** If your app only blocks exact numbers, use the `number` rows. If it supports prefixes, turn simple patterns such as `^140\d{7}$` into the prefix `140`.
+- **Build rules for another app with AI or a script:** feed `spamwall-in.json` (rules plus a `meta` object) to an AI assistant or a script and ask it to produce the format your app imports.
+- **Mobile numbers are left out on purpose.** Individual 10-digit mobile numbers (starting 6 to 9) are never listed, for privacy. Only landline, toll-free and series numbers appear as `number` rows.
 
 ## How the rules are checked
 

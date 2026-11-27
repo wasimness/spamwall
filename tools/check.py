@@ -9,6 +9,8 @@ errors = []
 ids = {}
 for txt in (ROOT / "rules").rglob("*.txt"):
     folder = txt.parent.name
+    if folder == "numbers":
+        continue
     n_rules = 0
     text = txt.read_text(encoding="utf-8")
     for n, line in enumerate(text.splitlines(), 1):
@@ -46,7 +48,7 @@ for f in ROOT.rglob("*"):
 
 
 def gen():
-    paths = [p for p in (ROOT / "spamblocker").rglob("*") if p.is_file()] + list((ROOT / "rules").rglob("patterns.md"))
+    paths = [p for p in (ROOT / "spamblocker").rglob("*") if p.is_file()] + list((ROOT / "rules").rglob("patterns.md")) + list((ROOT / "raw").rglob("*"))
     return {str(p.relative_to(ROOT)): p.read_bytes() for p in paths}
 
 
@@ -55,6 +57,29 @@ subprocess.run([sys.executable, "-I", str(ROOT / "tools" / "build_spamblocker.py
 after = gen()
 if before != after:
     errors.append("generated files are out of date: run tools/build_spamblocker.py and commit")
+mobile = re.compile(r"^[6-9]\d{9}$")
+for f in (ROOT / "rules" / "in" / "numbers").glob("*.txt"):
+    for n, line in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
+        s = line.strip()
+        if not s or s.startswith("#"):
+            continue
+        if not re.fullmatch(r"\d{4,11}", s):
+            errors.append(f"{f}:{n} not a valid number: {s}")
+        if mobile.match(s):
+            errors.append(f"{f}:{n} contains a 10-digit mobile number")
+for f in (ROOT / "raw").glob("*"):
+    for n, line in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
+        if re.search(r"(?<!\d)[6-9]\d{9}(?!\d)", line) and "number" in line and "pattern" not in line:
+            errors.append(f"{f}:{n} contains a 10-digit mobile number")
+raw = json.loads((ROOT / "raw" / "spamwall-in.json").read_text(encoding="utf-8"))
+for r in raw["rules"]:
+    if r["kind"] == "number" and not re.fullmatch(r"\d{4,11}", r["value"]):
+        errors.append(f"raw: bad number {r['value']}")
+    if r["kind"] == "pattern":
+        try:
+            re.compile(r["value"])
+        except re.error as e:
+            errors.append(f"raw: bad regex {r['id']}: {e}")
 d = json.loads((ROOT / "spamblocker" / "complete.json").read_text(encoding="utf-8"))
 rl = d["numberRules"]["rules"]
 shared = {r["priority"] for r in rl if r["isBlacklist"]} & {r["priority"] for r in rl if not r["isBlacklist"]}
