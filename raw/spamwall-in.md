@@ -48,7 +48,6 @@ Numbers are matched as the national number, without +91 or a leading 0. Patterns
 | block | IN-REPORTED-BUSINESS | number | `1416180559` | Business number reported as spam | community spam reports | 5 |
 | block | IN-REPORTED-BUSINESS | number | `1600318752` | Business number reported as spam | community spam reports | 5 |
 | block | IN-REPORTED-BUSINESS | number | `1726741521` | Business number reported as spam | community spam reports | 5 |
-| block | IN-REPORTED-BUSINESS | number | `19071139346` | Business number reported as spam | community spam reports | 5 |
 | block | IN-REPORTED-BUSINESS | number | `2045907791` | Business number reported as spam | community spam reports | 5 |
 | block | IN-REPORTED-BUSINESS | number | `2048566470` | Business number reported as spam | community spam reports | 5 |
 | block | IN-REPORTED-BUSINESS | number | `2067451410` | Business number reported as spam | community spam reports | 5 |
@@ -104,5 +103,3 @@ Numbers are matched as the national number, without +91 or a leading 0. Patterns
 | block | IN-REPORTED-BUSINESS | number | `5227187119` | Business number reported as spam | community spam reports | 5 |
 | block | IN-REPORTED-BUSINESS | number | `5227187120` | Business number reported as spam | community spam reports | 5 |
 | block | IN-REPORTED-BUSINESS | number | `5227188859` | Business number reported as spam | community spam reports | 5 |
-| block | IN-REPORTED-BUSINESS | number | `69795638505` | Business number reported as spam | community spam reports | 5 |
-| block | IN-REPORTED-BUSINESS | number | `91500224` | Business number reported as spam | community spam reports | 5 |

@@ -399,15 +399,6 @@
    "type": "block",
    "id": "IN-REPORTED-BUSINESS",
    "kind": "number",
-   "value": "19071139346",
-   "description": "Business number reported as spam",
-   "source": "community spam reports",
-   "priority": 5
-  },
-  {
-   "type": "block",
-   "id": "IN-REPORTED-BUSINESS",
-   "kind": "number",
    "value": "2045907791",
    "description": "Business number reported as spam",
    "source": "community spam reports",
@@ -895,24 +886,6 @@
    "id": "IN-REPORTED-BUSINESS",
    "kind": "number",
    "value": "5227188859",
-   "description": "Business number reported as spam",
-   "source": "community spam reports",
-   "priority": 5
-  },
-  {
-   "type": "block",
-   "id": "IN-REPORTED-BUSINESS",
-   "kind": "number",
-   "value": "69795638505",
-   "description": "Business number reported as spam",
-   "source": "community spam reports",
-   "priority": 5
-  },
-  {
-   "type": "block",
-   "id": "IN-REPORTED-BUSINESS",
-   "kind": "number",
-   "value": "91500224",
    "description": "Business number reported as spam",
    "source": "community spam reports",
    "priority": 5

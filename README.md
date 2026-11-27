@@ -2,22 +2,21 @@
 
 ![SpamWall: spam call and SMS block patterns for India](assets/banner.svg)
 
-**For Indian phone numbers (+91), calls and SMS.** SpamWall is a set of pattern-based block rules you can import in one click. It is built for [SpamBlocker](https://github.com/aj3423/SpamBlocker) on Android; the plain regex lists work in any blocker that accepts regular expressions.
+**For Indian phone numbers (+91), calls and SMS.** SpamWall is an open list of spam number patterns and numbers. Use the raw CSV, JSON or Markdown lists in any blocker app, or import the ready-made files into SpamBlocker, the Android app we currently use.
 
 It blocks whole number ranges used by telemarketers and call centres instead of single numbers. Every rule filters both calls and SMS. Calls and messages from shopping, delivery, ride and payment apps, from your contacts, and from official service lines are never blocked.
 
 > SMS filtering works only when **SMS** is switched on under *Settings > Screening* in SpamBlocker; follow the setup prompt it shows.
-## The app: SpamBlocker
+## The app we currently use
 
-SpamWall's import files are made for **[SpamBlocker](https://github.com/aj3423/SpamBlocker)**, a free, open-source call and SMS blocker for Android by aj3423. It is the app the maintainer uses every day with these rules.
+We use **[SpamBlocker](https://github.com/aj3423/SpamBlocker)** (free, open source, Android), so the one-click import files are in its format. Any other blocker works with the raw lists.
 
-- Get it from [F-Droid](https://f-droid.org/packages/spam.blocker/) or the [GitHub releases page](https://github.com/aj3423/SpamBlocker/releases).
-- It runs on your phone with no account, and number checks happen on the device.
-- Questions about the app itself go to the [SpamBlocker repository](https://github.com/aj3423/SpamBlocker/issues); questions about these rules go [here](../../issues).
+- Get SpamBlocker from [F-Droid](https://f-droid.org/packages/spam.blocker/) or its [GitHub releases](https://github.com/aj3423/SpamBlocker/releases).
+- App questions go to the [SpamBlocker repository](https://github.com/aj3423/SpamBlocker/issues); questions about these lists go [here](../../issues).
 
-SpamWall is a separate community project and is not made by or affiliated with SpamBlocker.
+SpamWall is an independent project, not made by or affiliated with SpamBlocker.
 
-## Quick start (SpamBlocker)
+## Quick start (if you use SpamBlocker)
 
 1. Export a backup first (**Settings > Backup > Export**), because an import replaces your number rules.
 2. Download [`spamblocker/complete.gz`](spamblocker/complete.gz), then **Settings > Backup > Import** and pick it.
