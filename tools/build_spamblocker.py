@@ -69,7 +69,7 @@ def main():
         for strict in (False, True):
             name = f"spamwall-{cc}{'-strict' if strict else ''}"
             data = json.dumps(build(cc, strict), indent=1, ensure_ascii=False)
-            (OUT / f"{name}.json").write_text(data, encoding="utf-8")
+            (OUT / f"{name}.json").write_text(data, encoding="utf-8", newline="\n")
             with gzip.GzipFile(OUT / f"{name}.gz", "wb", mtime=0) as f:
                 f.write(data.encode("utf-8"))
             print("built", name)
