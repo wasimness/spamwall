@@ -1,20 +1,39 @@
 """Build the SpamBlocker import files from rules/<country>/ and write patterns.md.
 
 Usage: python -I tools/build_spamblocker.py
-Writes spamblocker/{settings,rules-default,rules-strict,complete}.{gz,json}
-and rules/<cc>/patterns.md. Old spamwall-*.{gz,json} files are removed.
+Writes spamblocker/{spamblocker-full-setup,spamblocker-settings,spamblocker-all-rules,spamblocker-<group>}.{gz,json},
+raw/spamwall-<cc>.{csv,json,md} and rules/<cc>/patterns.md. Old spamwall-*.{gz,json} files are removed.
 """
+import csv
 import gzip
+import io
 import json
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "spamblocker"
+RAW = ROOT / "raw"
+VERSION = "0.3.0"
+REPO = "https://github.com/wasimness/spamwall"
 ALLOW_PRIORITY = 15  # whitelist rules run first
 BLOCK_PRIORITY = 5   # never equal to an allow priority (SpamBlocker issue #166)
 FLAGS_CALL_AND_SMS = 3
 REGEX_FLAGS = 8192
+
+
+GROUPS = {  # group slug -> label; the order is the order of the group files
+    "telemarketing": "Promo and telemarketing calls",
+    "call-centres": "Call-centre ranges",
+    "spam-mobiles": "Spam mobile ranges",
+    "banks-govt": "Bank and government calls (optional)",
+}
+DEFAULT_GROUPS = ["telemarketing", "call-centres", "spam-mobiles"]
+
+
+def read_group(path):
+    m = re.search(r"^# Group:\s*(\S+)\s*$", path.read_text(encoding="utf-8"), re.M)
+    return m.group(1) if m else ""
 
 
 def read_rules(path):
@@ -28,6 +47,7 @@ def read_rules(path):
         pattern, _, note = line.partition("#")
         parts = [p.strip() for p in note.split("|")]
         rules.append({
+            "group": read_group(path),
             "pattern": pattern.strip(), "id": parts[0],
             "what": parts[1] if len(parts) > 1 else "",
             "source": parts[2] if len(parts) > 2 else "",
@@ -66,37 +86,26 @@ def settings(d):
     }
 
 
-def rules_part(d, strict):
-    allow, block = read_dir(d / "allow"), read_dir(d / "block")
-    if strict:
-        block += read_dir(d / "optional")
+def group_rules(d, groups):
+    """Allow rules plus every block/optional rule whose group is in groups."""
+    allow = read_dir(d / "allow")
+    block = [r for kind in ("block", "optional") for r in read_dir(d / kind) if r["group"] in groups]
     rules = [rule(i + 100, r, False) for i, r in enumerate(allow)]
     rules += [rule(i + 200, r, True) for i, r in enumerate(block)]
     return {"numberRules": {"rules": rules}}
 
 
-def type_files(d):
-    out = {}
-    allow = read_dir(d / "allow")
-    for kind in ("block", "optional"):
-        for f in sorted((d / kind).glob("*.txt")):
-            rs = read_rules(f)
-            rules = [rule(i + 100, r, False) for i, r in enumerate(allow)]
-            rules += [rule(i + 200, r, True) for i, r in enumerate(rs)]
-            out[f"types/{f.stem}"] = {"categories": {"all": ["REGEX_RULES"]}, "numberRules": {"rules": rules}}
-    return out
-
-
 def files(d):
     s = settings(d)
-    default, strict = rules_part(d, False), rules_part(d, True)
-    return {
-        "settings": s,
-        "rules-default": {"categories": {"all": ["REGEX_RULES"]}, **default},
-        "rules-strict": {"categories": {"all": ["REGEX_RULES"]}, **strict},
-        "complete": {**s, "categories": {"all": ["OTHERS", "REGEX_RULES"]}, **default},
-        **type_files(d),
+    default = group_rules(d, DEFAULT_GROUPS)
+    out = {
+        "spamblocker-full-setup": {**s, "categories": {"all": ["OTHERS", "REGEX_RULES"]}, **default},
+        "spamblocker-settings": s,
+        "spamblocker-all-rules": {"categories": {"all": ["REGEX_RULES"]}, **default},
     }
+    for g in GROUPS:
+        out[f"spamblocker-{g}"] = {"categories": {"all": ["REGEX_RULES"]}, **group_rules(d, [g])}
+    return out
 
 
 def patterns_md(cc, d):
@@ -111,10 +120,53 @@ def patterns_md(cc, d):
     return head + "\n".join(rows) + "\n"
 
 
+def read_numbers(d):
+    f = d / "numbers" / "IN-REPORTED-BUSINESS.txt"
+    if not f.exists():
+        return []
+    return sorted({l.strip() for l in f.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")})
+
+
+def raw_rows(d):
+    rows = []
+    for kind, prio in (("allow", ALLOW_PRIORITY), ("block", BLOCK_PRIORITY), ("optional", BLOCK_PRIORITY)):
+        for r in read_dir(d / kind):
+            rows.append({"type": kind, "id": r["id"], "kind": "pattern", "value": r["pattern"],
+                         "description": r["what"], "source": r["source"], "priority": prio, "group": r["group"]})
+    for n in read_numbers(d):
+        rows.append({"type": "block", "id": "IN-REPORTED-BUSINESS", "kind": "number", "value": n,
+                     "description": "Business number reported as spam", "source": "community spam reports",
+                     "priority": BLOCK_PRIORITY, "group": ""})
+    return rows
+
+
+COLS = ["type", "id", "kind", "value", "description", "source", "priority", "group"]
+
+
+def raw_files(cc, d):
+    rows = raw_rows(d)
+    buf = io.StringIO(newline="")
+    w = csv.DictWriter(buf, fieldnames=COLS, lineterminator="\n")
+    w.writeheader()
+    w.writerows(rows)
+    meta = {"name": "SpamWall", "version": VERSION, "country": cc.upper(),
+            "matching": "national number without +91 or leading 0", "license": "MIT", "repo": REPO}
+    js = json.dumps({"meta": meta, "rules": rows}, indent=1, ensure_ascii=False) + "\n"
+    esc = lambda t: str(t).replace("|", "\\|")
+    md = ["<!-- Generated by tools/build_spamblocker.py. Do not edit. -->",
+          f"# SpamWall {cc.upper()} raw list (v{VERSION})", "",
+          "Numbers are matched as the national number, without +91 or a leading 0. "
+          "Patterns are regular expressions; numbers are exact matches.", "",
+          "| " + " | ".join(COLS) + " |", "|" + "---|" * len(COLS)]
+    for r in rows:
+        v = f"`{esc(r['value'])}`"
+        md.append("| " + " | ".join([r["type"], r["id"], r["kind"], v, esc(r["description"]), esc(r["source"]), str(r["priority"]), r["group"]]) + " |")
+    return {f"spamwall-{cc}.csv": buf.getvalue(), f"spamwall-{cc}.json": js, f"spamwall-{cc}.md": "\n".join(md) + "\n"}
+
+
 def main():
     OUT.mkdir(exist_ok=True)
-    (OUT / "types").mkdir(exist_ok=True)
-    for old in list(OUT.glob("spamwall-*")) + list((OUT / "types").glob("*")):
+    for old in OUT.glob("*"):
         old.unlink()
     for cc_dir in sorted(p for p in (ROOT / "rules").iterdir() if p.is_dir()):
         for name, obj in files(cc_dir).items():
@@ -123,6 +175,10 @@ def main():
             with gzip.GzipFile(OUT / f"{name}.gz", "wb", mtime=0) as f:
                 f.write(data.encode("utf-8"))
             print("built", name)
+        RAW.mkdir(exist_ok=True)
+        for name, text in raw_files(cc_dir.name, cc_dir).items():
+            (RAW / name).write_text(text, encoding="utf-8", newline="\n")
+            print("built raw", name)
         (cc_dir / "patterns.md").write_text(patterns_md(cc_dir.name, cc_dir), encoding="utf-8", newline="\n")
 
 
